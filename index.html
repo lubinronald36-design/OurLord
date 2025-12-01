@@ -2,227 +2,101 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Heavenly Inspirational Page</title>
+<title>Inspirational Page</title>
 
 <style>
-  body {
-    margin: 0;
-    overflow: hidden;
-    background: radial-gradient(circle at center, #2b0058, #000);
-    font-family: Georgia, serif;
-    color: #ffd6ff;
-    text-align: center;
-  }
+    body {
+        margin: 0;
+        padding: 0;
+        background: black;
+        color: white;
+        font-family: Arial, sans-serif;
+        overflow: hidden;
+    }
 
-  /* Heavenly Rays Background */
-  .rays {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: url('https://i.imgur.com/xkZVvQ8.png') center/cover no-repeat;
-    opacity: 0.25;
-    mix-blend-mode: screen;
-    pointer-events: none;
-  }
+    .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        width: 100%;
+        height: 100vh;
+        padding: 10px;
+        box-sizing: border-box;
+    }
 
-  /* Floating Crosses */
-  .cross {
-    position: fixed;
-    font-size: 30px;
-    color: #ff99ff;
-    opacity: 0.7;
-    animation: floatUp 12s linear infinite;
-  }
+    /* SCROLL AREA */
+    .scroll-box {
+        width: 65%;
+        height: 100%;
+        overflow: hidden;
+        padding-right: 10px;
+    }
 
-  @keyframes floatUp {
-    0% { transform: translateY(120vh) scale(0.7); opacity: 0.3; }
-    100% { transform: translateY(-20vh) scale(1); opacity: 0.9; }
-  }
+    .scroll-text {
+        font-size: 1.4em;
+        line-height: 1.5em;
+        animation: scrollUp 30s linear infinite;
+        white-space: pre-wrap;
+        /* TEXT STARTS IMMEDIATELY */
+        transform: translateY(0);
+    }
 
-  /* Falling Stars */
-  .star {
-    position: fixed;
-    width: 4px; height: 4px;
-    background: white;
-    border-radius: 50%;
-    animation: fall 6s linear infinite;
-    opacity: 0.8;
-  }
+    /* SCROLL UP WITHOUT DELAY */
+    @keyframes scrollUp {
+        0% { transform: translateY(0); }
+        100% { transform: translateY(-100%); }
+    }
 
-  @keyframes fall {
-    0% { transform: translateY(-10vh); }
-    100% { transform: translateY(120vh); }
-  }
-
-  /* Dove Animation */
-  .dove {
-    position: fixed;
-    top: 40%;
-    left: -20%;
-    width: 180px;
-    opacity: 0.85;
-    animation: fly 15s linear infinite;
-  }
-
-  @keyframes fly {
-    0% { transform: translateX(-30vw) translateY(0); }
-    50% { transform: translateX(60vw) translateY(-10vw); }
-    100% { transform: translateX(130vw) translateY(0); }
-  }
-
-  /* Title */
-  h1 {
-    margin-top: 20px;
-    font-size: 32px;
-    text-shadow: 0 0 14px #ff77ff;
-    z-index: 2;
-    position: relative;
-  }
-
-  /* Verse Rotator */
-  #verseBox {
-    margin-top: 20px;
-    font-size: 26px;
-    line-height: 1.6;
-    width: 90%;
-    margin-left: auto;
-    margin-right: auto;
-    animation: fadeIn 3s ease-in-out infinite alternate;
-    z-index: 2;
-    position: relative;
-  }
-
-  @keyframes fadeIn {
-    0% { opacity: 0.4; }
-    100% { opacity: 1; }
-  }
-
-  /* Scrolling Inspirational Text */
-  .scrolling-text {
-    position: absolute;
-    bottom: -120%;
-    width: 100%;
-    font-size: 24px;
-    line-height: 1.7;
-    white-space: pre-wrap;
-    padding: 20px;
-    text-shadow: 0 0 12px #ff99ff;
-    animation: scrollUp 55s linear infinite;
-    z-index: 2;
-  }
-
-  @keyframes scrollUp {
-    0% { bottom: -120%; opacity: 0; }
-    5% { opacity: 1; }
-    100% { bottom: 120%; opacity: 1;}
-  }
-
-  .footer {
-    position: absolute;
-    bottom: 10px;
-    width: 100%;
-    color: #ffe6ff;
-    font-size: 18px;
-    text-shadow: 0 0 10px #ff77ff;
-    z-index: 3;
-  }
+    /* SIDE IMAGE */
+    .side-img {
+        width: 30%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 10px;
+        filter: blur(3px);
+        opacity: 0.85;
+    }
 </style>
 </head>
 
 <body>
 
-<!-- Heavenly Rays -->
-<div class="rays"></div>
+<!-- BACKGROUND MUSIC -->
+<audio src="Lord.mp3" autoplay loop></audio>
 
-<!-- Dove -->
-<img class="dove" src="https://i.imgur.com/6B8Jj0P.png">
+<div class="container">
 
-<!-- Floating Crosses Generator -->
-<script>
-for (let i = 0; i < 10; i++) {
-  const cross = document.createElement("div");
-  cross.className = "cross";
-  cross.innerHTML = "✝";
-  cross.style.left = Math.random() * 100 + "vw";
-  cross.style.animationDuration = 8 + Math.random() * 10 + "s";
-  document.body.appendChild(cross);
-}
-</script>
+    <!-- SCROLLING TEXT -->
+    <div class="scroll-box">
+        <div class="scroll-text">
+God is with you in every struggle.
+He sees your tears,
+He hears your prayers,
+and He is preparing a breakthrough
+greater than your expectations.
 
-<!-- Falling Stars Generator -->
-<script>
-for (let i = 0; i < 20; i++) {
-  const star = document.createElement("div");
-  star.className = "star";
-  star.style.left = Math.random() * 100 + "vw";
-  star.style.animationDuration = 4 + Math.random() * 6 + "s";
-  document.body.appendChild(star);
-}
-</script>
-
-<!-- Autoplay Music -->
-<audio id="music" src="Recording_3.mp3" autoplay loop muted></audio>
-
-<h1>✨ God's Word • God's Love • God's Power ✨</h1>
-
-<!-- Rotating Bible Verses -->
-<div id="verseBox"></div>
-
-<script>
-const verses = [
-  `"God is within her, she will not fall." — Psalm 46:5`,
-  `"No weapon formed against you shall prosper." — Isaiah 54:17`,
-  `"The Lord is my shepherd; I shall not want." — Psalm 23`,
-  `"Be strong and courageous. I am with you." — Joshua 1:9`,
-  `"Cast all your worries upon Him." — 1 Peter 5:7`,
-  `"Walk by faith, not by sight." — 2 Cor 5:7`,
-  `"I am with you always." — Matthew 28:20`
-];
-
-let index = 0;
-document.getElementById("verseBox").innerText = verses[index];
-
-setInterval(() => {
-  index = (index + 1) % verses.length;
-  document.getElementById("verseBox").innerText = verses[index];
-}, 6000);
-</script>
-
-<!-- Scrolling Inspiration -->
-<div class="scrolling-text">
-Let your heart rest in God tonight.
-He knows the battles you fight,
-the fears you hide,
-the tears you cry.
-
-He is working in ways
-you cannot yet see.
-
-Every setback is a setup
-for a greater comeback.
+Do not be discouraged,
+for every delay has purpose.
+Every challenge builds strength.
+Every setback prepares a comeback.
 
 You are chosen.
 You are protected.
 You are guided.
-You are never alone.
 
-God’s light is upon you,
-His angels surround you,
-and His love covers you forever. ✨
+Walk with confidence,
+for the Lord walks ahead of you.
+Trust His timing,
+trust His plan,
+and trust His love.
+
+✨ You are never alone. ✨
+        </div>
+    </div>
+
+    <!-- SIDE IMAGE -->
+    <img class="side-img" src="kekela.jpg">
 </div>
-
-<!-- Footer -->
-<div class="footer">
-Prepared by Teacher Ronald for all children of God around the world.
-</div>
-
-<script>
-// Music Autoplay Fix
-const music = document.getElementById("music");
-music.play().then(() => setTimeout(() => music.muted = false, 300));
-document.addEventListener("click", () => { music.muted = false; music.play(); });
-document.addEventListener("touchstart", () => { music.muted = false; music.play(); });
-</script>
 
 </body>
 </html>
